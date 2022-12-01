@@ -1,0 +1,5 @@
+---
+title: "Advent of Code"
+---
+
+Just a quick website to post my advent of code workins for 2022.

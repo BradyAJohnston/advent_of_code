@@ -73,3 +73,22 @@ dat |>
   ) |> 
   summarise(total = sum(total))
 ```
+
+### Additional Poking Around
+
+Some additional visulisations of the daily data.
+
+```{r}
+dat |> 
+  ggplot(aes(total)) + 
+  geom_histogram(
+    fill = "gray50", 
+    binwidth = 2000
+  ) + 
+  labs(
+    x = "Calories Carried", 
+    y = "Number of Elves"
+  ) + 
+  theme_bw()
+```
+
