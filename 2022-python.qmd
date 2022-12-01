@@ -1,0 +1,79 @@
+---
+title: "2022-python"
+editor: visual
+---
+
+Now in Python!
+
+Read in the data in python.
+
+```{python}
+file = "data/day1.txt"
+f = open(file)
+lines = f.read()
+f.close()
+
+lines = lines.split('\n')
+lines[:10]
+```
+
+```{python}
+
+class Mischief:
+  def __init__(self):
+    self.elves = []
+    self.count = 0
+  
+  def add_elf(self):
+    self.elves.append(self.count)
+    yield self.count
+    
+    self.count += 1
+
+main = Mischief()
+
+class Elf:
+  def __init__(self, id = int(1)):
+    self.snacks = []
+    self.id = int(id)
+    
+    
+  def add_snack(self, calories):
+    self.snacks.append(calories)
+    
+  def cal_total(self):
+    if len(self.snacks) == 0:
+      return 0
+    
+    cals = 0
+    for snack in self.snacks:
+      cals += int(snack)
+    return cals
+
+new_elf = True  
+counter = 0
+elves = []
+for snack in lines:
+  if new_elf:
+    elf = Elf(counter)
+    elves.append(elf)
+    new_elf = False
+  
+  if snack != "":
+    elves[counter].add_snack(int(snack))
+  else:
+    new_elf = True
+    counter += 1
+```
+
+```{python}
+max_elf = elves[0]
+for elf in elves:
+  if elf.cal_total() > max_elf.cal_total():
+    max_elf = elf
+print("Elf No. " + str(max_elf.id) + " with " + str(max_elf.cal_total()) + " calories.")
+```
+
+```{python}
+
+```

@@ -8,6 +8,7 @@ website:
       - href: index.qmd
         text: Home
       - '2022.qmd'
+      - '2022-python.qmd'
 
 format:
   html:

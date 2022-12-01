@@ -13,7 +13,7 @@ Document for workingo out solutions to the advent of code.
 Read in the data:
 
 ```{r filename = "Code"}
-#| class-output: "r sourceCode"
+#| class-output: "code"
 options(tidyverse.quiet = TRUE)
 library(tidyverse)
 
