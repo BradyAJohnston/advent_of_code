@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Advent of Code",
+    "section": "",
+    "text": "Just a quick website to post my advent of code workins for 2022."
+  },
+  {
+    "objectID": "2022.html",
+    "href": "2022.html",
+    "title": "Advent of Code",
+    "section": "",
+    "text": "Document for workingo out solutions to the advent of code."
+  },
+  {
+    "objectID": "2022.html#day-1",
+    "href": "2022.html#day-1",
+    "title": "Advent of Code",
+    "section": "Day 1",
+    "text": "Day 1\n\nPart 1\nRead in the data:\n\n\n\nCode\n\noptions(tidyverse.quiet = TRUE)\nlibrary(tidyverse)\n\ndat <- read_lines('data/day1.txt') |> \n  as_tibble() |> \n  rename(calories = 1)\n\nhead(dat)\n\n\n# A tibble: 6 × 1\n  calories\n  <chr>   \n1 5474    \n2 4920    \n3 5381    \n4 8650    \n5 11617   \n6 7193    \n\n\nEach data point is separated by an empty line, we can check when those lines are empty and count upwards, to label each datapoints for each elf.\n\n\n\nCode\n\ndat <- dat |> \n  mutate(\n    calories = as.numeric(calories), \n    elf = cumsum(is.na(calories)) + 1\n  )\ndat\n\n\n# A tibble: 2,244 × 2\n   calories   elf\n      <dbl> <dbl>\n 1     5474     1\n 2     4920     1\n 3     5381     1\n 4     8650     1\n 5    11617     1\n 6     7193     1\n 7     8161     1\n 8       NA     2\n 9    10747     2\n10     5855     2\n# … with 2,234 more rows\n\n\nNow we can remove the empty rows, and nest the data for each elf.\n\n\n\nCode\n\ndat <- dat |> \ndrop_na(calories) |> \n  group_by(elf) |> \n  nest() \ndat\n\n\n# A tibble: 242 × 2\n# Groups:   elf [242]\n     elf data             \n   <dbl> <list>           \n 1     1 <tibble [7 × 1]> \n 2     2 <tibble [6 × 1]> \n 3     3 <tibble [13 × 1]>\n 4     4 <tibble [10 × 1]>\n 5     5 <tibble [14 × 1]>\n 6     6 <tibble [1 × 1]> \n 7     7 <tibble [2 × 1]> \n 8     8 <tibble [5 × 1]> \n 9     9 <tibble [7 × 1]> \n10    10 <tibble [8 × 1]> \n# … with 232 more rows\n\n\nFor each nested dataframe, we can sum together the calories and arrange the dataframe based on the descending total of calories\n\n\n\nCode\n\ndat <- dat |> \n  mutate(\n    total = map_dbl(data, sum)\n  ) |> \n  arrange(-total)\n\ndat\n\n\n# A tibble: 242 × 3\n# Groups:   elf [242]\n     elf data              total\n   <dbl> <list>            <dbl>\n 1    31 <tibble [12 × 1]> 66306\n 2   160 <tibble [14 × 1]> 64532\n 3   161 <tibble [1 × 1]>  64454\n 4    53 <tibble [14 × 1]> 64230\n 5     9 <tibble [7 × 1]>  63623\n 6   133 <tibble [14 × 1]> 63339\n 7   202 <tibble [11 × 1]> 62944\n 8   177 <tibble [6 × 1]>  62852\n 9   109 <tibble [3 × 1]>  62425\n10   181 <tibble [3 × 1]>  62355\n# … with 232 more rows\n\n\n\n\nPart 2\nWe need to first ungroup the rows, then rank the totals and get only the top 3 values.\n\n\n\nCode\n\ndat |> \n  ungroup() |> \n  filter(\n    rev(rank(total)) %in% 1:3\n  ) |> \n  summarise(total = sum(total))\n\n\n# A tibble: 1 × 1\n   total\n   <dbl>\n1 195292\n\n\n\n\nAdditional Poking Around\nSome additional visulisations of the daily data.\n\ndat |> \n  ggplot(aes(total)) + \n  geom_histogram(\n    fill = \"gray50\", \n    binwidth = 2000\n  ) + \n  labs(\n    x = \"Calories Carried\", \n    y = \"Number of Elves\"\n  ) + \n  theme_bw()"
+  }
+]
