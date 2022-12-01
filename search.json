@@ -7,6 +7,13 @@
     "text": "Just a quick website to post my advent of code workins for 2022."
   },
   {
+    "objectID": "2022-python.html",
+    "href": "2022-python.html",
+    "title": "2022-python",
+    "section": "",
+    "text": "Now in Python!\nRead in the data in python.\n\nfile = \"data/day1.txt\"\nf = open(file)\nlines = f.read()\nf.close()\n\nlines = lines.split('\\n')\nlines[:10]\n\n['5474', '4920', '5381', '8650', '11617', '7193', '8161', '', '10747', '5855']\n\n\n\nclass Mischief:\n  def __init__(self):\n    self.elves = []\n    self.count = 0\n  \n  def add_elf(self):\n    self.elves.append(self.count)\n    yield self.count\n    \n    self.count += 1\n\nmain = Mischief()\n\nclass Elf:\n  def __init__(self, id = int(1)):\n    self.snacks = []\n    self.id = int(id)\n    \n    \n  def add_snack(self, calories):\n    self.snacks.append(calories)\n    \n  def cal_total(self):\n    if len(self.snacks) == 0:\n      return 0\n    \n    cals = 0\n    for snack in self.snacks:\n      cals += int(snack)\n    return cals\n\nnew_elf = True  \ncounter = 0\nelves = []\nfor snack in lines:\n  if new_elf:\n    elf = Elf(counter)\n    elves.append(elf)\n    new_elf = False\n  \n  if snack != \"\":\n    elves[counter].add_snack(int(snack))\n  else:\n    new_elf = True\n    counter += 1\n\n\nmax_elf = elves[0]\nfor elf in elves:\n  if elf.cal_total() > max_elf.cal_total():\n    max_elf = elf\nprint(\"Elf No. \" + str(max_elf.id) + \" with \" + str(max_elf.cal_total()) + \" calories.\")\n\nElf No. 30 with 66306 calories."
+  },
+  {
     "objectID": "2022.html",
     "href": "2022.html",
     "title": "Advent of Code",
