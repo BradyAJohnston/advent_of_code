@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://BradyAJohnston.github.io/advent_of_code/index.html</loc>
-    <lastmod>2022-12-01T10:24:33.381Z</lastmod>
+    <lastmod>2022-12-02T01:42:09.439Z</lastmod>
   </url>
   <url>
     <loc>https://BradyAJohnston.github.io/advent_of_code/2022-python.html</loc>
-    <lastmod>2022-12-01T10:24:35.678Z</lastmod>
+    <lastmod>2022-12-02T01:42:11.688Z</lastmod>
   </url>
   <url>
-    <loc>https://BradyAJohnston.github.io/advent_of_code/2022.html</loc>
-    <lastmod>2022-12-01T10:24:41.899Z</lastmod>
+    <loc>https://BradyAJohnston.github.io/advent_of_code/2022-r-lang.html</loc>
+    <lastmod>2022-12-02T01:42:20.991Z</lastmod>
   </url>
 </urlset>
