@@ -1,12 +1,19 @@
 ---
-title: "2022-python"
+title: "Python"
 editor: visual
 ---
 
-Now in Python!
+Trying to practice with using OOP and classes inside of python.
 
-Read in the data in python.
+The idea that I am going to be aiming for, is to have a class to represent an elf, and then also a class that contains all of the elves together.
 
+Unsure really about how classes work, so this will be an experiment!
+
+
+
+### Read in the data in python.
+
+Lets first get all of the data inside and have a look at it.
 ```{python}
 file = "data/day1.txt"
 f = open(file)
@@ -17,63 +24,80 @@ lines = lines.split('\n')
 lines[:10]
 ```
 
+### A class for Elves.
+
+I'll want a class that is an elf, which at least to begin with will have an id number to identify which elf it is, but also a place to store which snacks they are carrying, and a function to count up the calories of all of the snacks they are carrying.
+
 ```{python}
-
-class Mischief:
-  def __init__(self):
-    self.elves = []
-    self.count = 0
-  
-  def add_elf(self):
-    self.elves.append(self.count)
-    yield self.count
-    
-    self.count += 1
-
-main = Mischief()
-
 class Elf:
   def __init__(self, id = int(1)):
     self.snacks = []
     self.id = int(id)
-    
-    
+
   def add_snack(self, calories):
     self.snacks.append(calories)
     
   def cal_total(self):
     if len(self.snacks) == 0:
       return 0
-    
-    cals = 0
-    for snack in self.snacks:
-      cals += int(snack)
-    return cals
+    return sum(self.snacks)
+```
 
-new_elf = True  
-counter = 0
-elves = []
-for snack in lines:
-  if new_elf:
-    elf = Elf(counter)
-    elves.append(elf)
-    new_elf = False
+Now we want a class than can hold multiple elves, with a function to add an elf, and a function to find which elf has the most calories.
+
+```{python}
+class Mischief:
+  def __init__(self):
+    self.elves = []
   
-  if snack != "":
-    elves[counter].add_snack(int(snack))
-  else:
-    new_elf = True
-    counter += 1
+  def add_elf(self):
+    self.elves.append(Elf(len(self.elves)))
+  
+  def add_elves_and_snacks(self, lines):
+    new_elf = True  
+    counter = 0
+    for snack in lines:
+      if new_elf:
+        self.add_elf()
+        new_elf = False
+      if snack != "":
+        group.elves[counter].add_snack(int(snack))
+      else:
+        new_elf = True
+        counter += 1
+  
+  def get_elf_max_cal(self):
+    max_elf = self.elves[0]
+    for elf in self.elves:
+      if elf.cal_total() > max_elf.cal_total():
+        max_elf = elf
+    
+    print(f"Elf No. {max_elf.id} with {max_elf.cal_total()} calories.")
+    return max_elf
 ```
 
 ```{python}
-max_elf = elves[0]
-for elf in elves:
-  if elf.cal_total() > max_elf.cal_total():
-    max_elf = elf
-print("Elf No. " + str(max_elf.id) + " with " + str(max_elf.cal_total()) + " calories.")
+# setup the mischief of elves
+group = Mischief()
+
+# add the elves and their snacks
+# I feel like this should be part of the setup, but I can't currenlty figure out
+# how to get it working
+group.add_elves_and_snacks(lines)
+
+# find the elf with the most snacks!
+group.get_elf_max_cal()
 ```
+
+## Part 2
+Find the top 3 elves, and how many calories total they all are carrying.
+
 
 ```{python}
-
+all_snack_totals = [elf.cal_total() for elf in group.elves]
+all_snack_totals.sort(reverse=True)
+top_3 = sum(all_snack_totals[:3])
+print(f"The 3 elves with the most snacks have a combined {top_3} calories.")
 ```
+
+While this finds the top 3 elf snack calories and adds them together, it's unclear where those totals are coming from. Thant's something I'd like to improve, but this is where I will leave this part for the python component.

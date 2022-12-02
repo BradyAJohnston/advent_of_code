@@ -1,11 +1,13 @@
 ---
-title: "Advent of Code"
+title: "R-lang"
 author: "Brady Johnston"
 format: html
 editor: visual
 ---
 
 Document for workingo out solutions to the advent of code.
+
+The approach that I am going to be taking for the R code is a very `{tiydyverse}`-centric, trying to leverage nested dadtaframes and mapping as much as possible.
 
 ## Day 1
 ### Part 1

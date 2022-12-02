@@ -7,14 +7,17 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - '2022.qmd'
+      - '2022-r-lang.qmd'
       - '2022-python.qmd'
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
+    code-link: true
 
 
 
