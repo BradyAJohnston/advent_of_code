@@ -169,9 +169,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#read-in-the-data-in-python." id="toc-read-in-the-data-in-python." class="nav-link active" data-scroll-target="#read-in-the-data-in-python.">Read in the data in python.</a></li>
+  <li><a href="#day-1" id="toc-day-1" class="nav-link active" data-scroll-target="#day-1">Day 1</a>
+  <ul class="collapse">
+  <li><a href="#part-1" id="toc-part-1" class="nav-link" data-scroll-target="#part-1">Part 1</a></li>
   <li><a href="#a-class-for-elves." id="toc-a-class-for-elves." class="nav-link" data-scroll-target="#a-class-for-elves.">A class for Elves.</a></li>
   <li><a href="#part-2" id="toc-part-2" class="nav-link" data-scroll-target="#part-2">Part 2</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -198,8 +201,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Trying to practice with using OOP and classes inside of python.</p>
 <p>The idea that I am going to be aiming for, is to have a class to represent an elf, and then also a class that contains all of the elves together.</p>
 <p>Unsure really about how classes work, so this will be an experiment!</p>
-<section id="read-in-the-data-in-python." class="level3">
-<h3 class="anchored" data-anchor-id="read-in-the-data-in-python.">Read in the data in python.</h3>
+<section id="day-1" class="level2">
+<h2 class="anchored" data-anchor-id="day-1">Day 1</h2>
+<section id="part-1" class="level3">
+<h3 class="anchored" data-anchor-id="part-1">Part 1</h3>
+<section id="read-in-the-data-in-python." class="level4">
+<h4 class="anchored" data-anchor-id="read-in-the-data-in-python.">Read in the data in python.</h4>
 <p>Lets first get all of the data inside and have a look at it.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> <span class="st">"data/day1.txt"</span></span>
@@ -209,10 +216,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>lines <span class="op">=</span> lines.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>)</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>lines[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="26">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>['5474', '4920', '5381', '8650', '11617', '7193', '8161', '', '10747', '5855']</code></pre>
 </div>
 </div>
+</section>
 </section>
 <section id="a-class-for-elves." class="level3">
 <h3 class="anchored" data-anchor-id="a-class-for-elves.">A class for Elves.</h3>
@@ -276,13 +284,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="cell-output cell-output-stdout">
 <pre><code>Elf No. 30 with 66306 calories.</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>&lt;__main__.Elf at 0x7fb0c6728eb0&gt;</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>&lt;__main__.Elf at 0x7fd131ffc580&gt;</code></pre>
 </div>
 </div>
 </section>
-<section id="part-2" class="level2">
-<h2 class="anchored" data-anchor-id="part-2">Part 2</h2>
+<section id="part-2" class="level3">
+<h3 class="anchored" data-anchor-id="part-2">Part 2</h3>
 <p>Find the top 3 elves, and how many calories total they all are carrying.</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>all_snack_totals <span class="op">=</span> [elf.cal_total() <span class="cf">for</span> elf <span class="kw">in</span> group.elves]</span>
@@ -296,6 +304,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>While this finds the top 3 elf snack calories and adds them together, it’s unclear where those totals are coming from. Thant’s something I’d like to improve, but this is where I will leave this part for the python component.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
